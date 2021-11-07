@@ -8,4 +8,4 @@
 // const learnhypertext = require('./lib/js/learnhypertext.mjs');
 import * as LearnHypertext from './lib/js/learnhypertext.mjs';
 
-let oParagraph = LearnHypertext.createParagraph('size');
+let oParagraph = LearnHypertext.createParagraph('size', `the window size is ${window.innerWidth} x ${window.innerHeight}`);
