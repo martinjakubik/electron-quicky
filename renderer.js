@@ -91,6 +91,7 @@ let clearGrid = function () {
 let makeGrid = function (numberOfRows, sizeOfBox) {
 
     let numberOfColumns = numberOfRows;
+    oAppConfiguration.gridSize = numberOfRows;
 
     let y = 0;
     let x = 0;
