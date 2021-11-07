@@ -1,0 +1,18 @@
+div {
+    white-space : nowrap; 
+    overflow : hidden;
+    margin: 0px 0 -2px 0;
+}
+div>div {
+    display: inline-block;
+    background-color: rgb(68, 157, 230);
+    border: 2px solid white;
+}
+
+.touch {
+    background-color: rgb(147, 223, 145);
+}
+
+.neighbor:not(.touch) {
+    background-color: rgba(147, 223, 145, 0.5);
+}
