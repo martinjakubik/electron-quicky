@@ -5,4 +5,7 @@
 // selectively enable features needed in the rendering
 // process.
 
-const learnhypertext = require('./lib/js/learnhypertext.mjs');
+// const learnhypertext = require('./lib/js/learnhypertext.mjs');
+import * as LearnHypertext from './lib/js/learnhypertext.mjs';
+
+let oParagraph = LearnHypertext.createParagraph('size');
