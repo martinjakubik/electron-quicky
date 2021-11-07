@@ -9,3 +9,5 @@
 import * as LearnHypertext from './lib/js/learnhypertext.mjs';
 
 let oParagraph = LearnHypertext.createParagraph('size', `the window size is ${window.innerWidth} x ${window.innerHeight}`);
+
+let oInput = LearnHypertext.createTextInput('nameInput', '', 'Name');
