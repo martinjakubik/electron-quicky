@@ -1,3 +1,17 @@
+label {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#numRows {
+    border: 2px solid black;
+    margin: 8px;
+}
+
+#boxSize {
+    border: 2px solid black;
+    margin: 8px;
+}
+
 div {
     white-space : nowrap; 
     overflow : hidden;
