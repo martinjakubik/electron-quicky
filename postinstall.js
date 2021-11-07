@@ -1,4 +1,5 @@
-import * as oFs from 'fs/promises';
+// import * as oFs from 'fs/promises';
+const oFs = require('fs/promises');
 
 const sLibPath = './lib/js';
 
