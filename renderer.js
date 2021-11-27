@@ -20,11 +20,64 @@ let handleClick = function (event) {
 
     const oTarget = event.currentTarget;
 
-    let aNeighbors = getNeighbors(oTarget);
-    aNeighbors.forEach(oNeighbor => {
-        oNeighbor.classList.add('neighbor');
-        setTimeout(() => {oNeighbor.classList.remove('neighbor');}, 360);
-    });
+    let nCircles = 15;
+    let aCircles = [];
+    for (let nCircle = 1; nCircle <= nCircles; nCircle++) {
+        aCircles.push(getCircle(oTarget, nCircle));
+    }
+    aCircles.forEach((aCircle, nIndex) => setTimeout(() => aCircle.forEach(oPixel => {
+        oPixel.classList.add('ripple');
+        setTimeout(() => {oPixel.classList.remove('ripple');}, 156);
+    }), 48 * nIndex));
+
+};
+
+let getCircle = function (oElement, nRadius = 1) {
+
+    let aCircle = [];
+    let sId = oElement.id;
+    let aXYCoordinates = sId.split(':').map(Number);
+    let x = aXYCoordinates[0];
+    let y = aXYCoordinates[1];
+
+    if ((y - nRadius) >= 0) {
+        if ((x - nRadius) >= 0) {
+            aCircle.push(document.getElementById(`${x - 1}:${y - nRadius}`));
+        }
+        aCircle.push(document.getElementById(`${x}:${y - nRadius}`));
+        if ((x + nRadius) <= oAppConfiguration.gridSize - 1) {
+            aCircle.push(document.getElementById(`${x + 1}:${y - nRadius}`));
+        }
+    }
+    if ((x - nRadius) >= 0) {
+        if ((y - nRadius) >= 0) {
+            aCircle.push(document.getElementById(`${x - nRadius}:${y - 1}`));
+        }
+        aCircle.push(document.getElementById(`${x - nRadius}:${y}`));
+        if ((y + nRadius) <= oAppConfiguration.gridSize - 1) {
+            aCircle.push(document.getElementById(`${x - nRadius}:${y + 1}`));
+        }
+    }
+    if ((x + nRadius) <= oAppConfiguration.gridSize - 1) {
+        if ((y - nRadius) >= 0) {
+            aCircle.push(document.getElementById(`${x + nRadius}:${y - 1}`));
+        }
+        aCircle.push(document.getElementById(`${x + nRadius}:${y}`));
+        if ((y + nRadius) <= oAppConfiguration.gridSize - 1) {
+            aCircle.push(document.getElementById(`${x + nRadius}:${y + 1}`));
+        }
+    }
+    if ((y + nRadius) <= oAppConfiguration.gridSize - 1) {
+        if ((x - nRadius) >= 0) {
+            aCircle.push(document.getElementById(`${x - 1}:${y + nRadius}`));
+        }
+        aCircle.push(document.getElementById(`${x}:${y + nRadius}`));
+        if ((x + nRadius) <= oAppConfiguration.gridSize - 1) {
+            aCircle.push(document.getElementById(`${x + 1}:${y + nRadius}`));
+        }
+    }
+
+    return aCircle;
 
 };
 
@@ -40,33 +93,6 @@ let makeBox = function (parentBox, sizeOfBox, x, y) {
     box.onclick = handleClick;
 
     return box;
-
-};
-
-let getNeighbors = function (oElement) {
-
-    let aNeighbors = [];
-    let sId = oElement.id;
-    let aXYCoordinates = sId.split(':').map(Number);
-    let x = aXYCoordinates[0];
-    let y = aXYCoordinates[1];
-
-    if (y > 0) {
-        aNeighbors.push(document.getElementById(`${x}:${y - 1}`));
-    }
-
-    if (x > 0) {
-        aNeighbors.push(document.getElementById(`${x - 1}:${y}`));
-    }
-    if (x < oAppConfiguration.gridSize - 1) {
-        aNeighbors.push(document.getElementById(`${x + 1}:${y}`));
-    }
-
-    if (y < oAppConfiguration.gridSize - 1) {
-        aNeighbors.push(document.getElementById(`${x}:${y + 1}`));
-    }
-
-    return aNeighbors;
 
 };
 

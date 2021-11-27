@@ -28,6 +28,6 @@ div>div {
     background-color: rgb(147, 223, 145);
 }
 
-.neighbor:not(.touch) {
+.ripple:not(.touch) {
     background-color: rgba(147, 223, 145, 0.5);
 }
