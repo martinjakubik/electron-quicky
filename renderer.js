@@ -166,8 +166,8 @@ numberOfRowInput.onchange = handleNumberOfRowChange;
 
 sizeOfBoxInput.onchange = handleSizeOfBoxChange;
 
-let numberOfRows = 4;
-let sizeOfBox = 16;
+let numberOfRows = 24;
+let sizeOfBox = 24;
 
 let oAppConfiguration = {
     gridSize: 0
