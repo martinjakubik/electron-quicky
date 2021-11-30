@@ -150,16 +150,16 @@ let handleSizeOfBoxChange = function (event) {
 
 };
 
-let numberOfRowInput = LearnHypertext.createTextInput('numRows', '', 'rows');
+let numberOfRows = 24;
+let sizeOfBox = 24;
 
-let sizeOfBoxInput = LearnHypertext.createTextInput('boxSize', '', 'box size');
+let numberOfRowInput = LearnHypertext.createSlider('numRows', '1', '36', numberOfRows, 'rows');
+
+let sizeOfBoxInput = LearnHypertext.createSlider('boxSize', '12', '64', sizeOfBox, 'box size');
 
 numberOfRowInput.onchange = handleNumberOfRowChange;
 
 sizeOfBoxInput.onchange = handleSizeOfBoxChange;
-
-let numberOfRows = 24;
-let sizeOfBox = 24;
 
 let oAppConfiguration = {
     gridSize: 0
