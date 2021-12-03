@@ -1,9 +1,17 @@
 class DynamicInput {
 
+    constructor (parent) {
+        this.parent = parent;
+    }
+
+    getName () {
+        return 'Dynamic Input';
+    }
+
     render () {
 
-        for (let x = 10; x < 50; x++) {
-            createSlider('numRows', 1, x, 12, 'rows');
+        for (let x = 10; x < 12; x++) {
+            createSlider('numRows', 1, x, 12, 'rows', 1, this.parent);
         }
 
     }
