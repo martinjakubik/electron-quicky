@@ -2,7 +2,9 @@ import * as LearnHypertext from './lib/js/learnhypertext.mjs';
 
 class Grid {
 
-    constructor () {
+    constructor (parent) {
+
+        this.parent = parent;
 
         this.numberOfRows = 24;
         this.sizeOfBox = 24;
@@ -13,11 +15,15 @@ class Grid {
 
     }
 
+    getName () {
+        return 'Grid';
+    }
+
     render () {
 
-        let numberOfRowInput = LearnHypertext.createSlider('numRows', '1', '36', this.numberOfRows, 'rows');
+        let numberOfRowInput = LearnHypertext.createSlider('numRows', '1', '36', this.numberOfRows, 'rows', 1, this.parent);
 
-        let sizeOfBoxInput = LearnHypertext.createSlider('boxSize', '12', '64', this.sizeOfBox, 'box size');
+        let sizeOfBoxInput = LearnHypertext.createSlider('boxSize', '12', '64', this.sizeOfBox, 'box size', 1, this.parent);
 
         numberOfRowInput.onchange = handleNumberOfRowChange.bind(this);
 
@@ -147,7 +153,7 @@ let makeGrid = function (numberOfRows, sizeOfBox) {
     while (y < numberOfRows) {
 
         x = 0;
-        rowBox = LearnHypertext.createDiv(`row${y}`);
+        rowBox = LearnHypertext.createDiv(`row${y}`, this.parent);
         while (x < numberOfColumns) {
 
             makeBox.call(this, rowBox, sizeOfBox, x, y);

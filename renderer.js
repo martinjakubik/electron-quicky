@@ -1,4 +1,5 @@
 import DynamicInput from './dynamicinput.js';
+import Grid from './grid.js';
 
 const loadPage = function (oPage) {
 
@@ -19,10 +20,12 @@ const oCurrentPage = document.createElement('div');
 oCurrentPage.id = 'currentPage';
 document.body.appendChild(oCurrentPage);
 let oDynamicInputPage = new DynamicInput(oCurrentPage);
+let oGrid = new Grid(oCurrentPage);
 loadPage(oDynamicInputPage);
 
 const aPages = [];
 aPages.push(oDynamicInputPage);
+aPages.push(oGrid);
 
 aPages.forEach(oPage => {
     const oPageLinkParagraph = document.createElement('p');
