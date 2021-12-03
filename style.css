@@ -22,7 +22,7 @@ div {
     margin: 0px 0 -2px 0;
 }
 
-div>div {
+div>div>div {
     display: inline-block;
     background-color: rgb(68, 157, 230);
     border: 2px solid white;
