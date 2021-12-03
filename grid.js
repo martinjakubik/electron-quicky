@@ -125,18 +125,13 @@ let makeBox = function (parentBox, sizeOfBox, x, y) {
 
 let clearGrid = function () {
 
-    let boxes = document.getElementsByTagName('div');
-    let indexOfLastBox;
-    let lastBox;
     let parentElement;
 
-    while (boxes.length > 0) {
-
-        indexOfLastBox = boxes.length - 1;
-        lastBox = boxes.item(indexOfLastBox);
-        parentElement = lastBox.parentElement;
-        parentElement.removeChild(lastBox);
-
+    const nNumberOfRows = this.appConfiguration.gridSize;
+    for (let nRow = nNumberOfRows - 1; nRow >= 0; nRow--) {
+        let oRow = document.getElementById(`row${nRow}`);
+        parentElement = oRow.parentElement;
+        parentElement.removeChild(oRow);
     }
 
 };
@@ -171,7 +166,7 @@ let handleNumberOfRowChange = function (event) {
 
     this.numberOfRows = event.target.value;
 
-    clearGrid();
+    clearGrid.call(this);
     makeGrid.call(this, this.numberOfRows, this.sizeOfBox);
 
 };
@@ -180,7 +175,7 @@ let handleSizeOfBoxChange = function (event) {
 
     this.sizeOfBox = event.target.value;
 
-    clearGrid();
+    clearGrid.call(this);
     makeGrid.call(this, this.numberOfRows, this.sizeOfBox);
 
 };
