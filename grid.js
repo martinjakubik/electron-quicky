@@ -39,7 +39,9 @@ let handleHover = function (event) {
 
     const oTarget = event.currentTarget;
     oTarget.classList.add('touch');
-    setTimeout(() => {oTarget.classList.remove('touch');}, 500);
+    setTimeout(() => {
+        oTarget.classList.remove('touch');
+    }, 500);
 
 };
 
