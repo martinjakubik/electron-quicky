@@ -11,7 +11,7 @@ class DynamicInput {
     render () {
 
         for (let x = 10; x < 50; x++) {
-            createSlider('numRows', 1, x, 12, 'rows', 1, this.parent);
+            createSlider('numRows', 1, x, 12, `${x} Hz`, 1, this.parent);
         }
 
     }
