@@ -19,7 +19,6 @@ label {
 div {
     white-space : nowrap; 
     overflow : hidden;
-    margin: 0px 0 -2px 0;
 }
 
 div>div>div {
