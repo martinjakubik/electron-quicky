@@ -1,37 +1,37 @@
-import DynamicInput from './dynamicinput.js';
-import Grid from './grid.js';
+let makeBox = function (parentBox) {
 
-const loadPage = function (oPage) {
+    let box = document.createElement('div');
+    parentBox.appendChild(box);
 
-    const oCurrentPage = document.getElementById('currentPage');
-    if (oCurrentPage) {
-        const aCurrentPageContent = oCurrentPage.childNodes;
-        const nNumberOfElements = aCurrentPageContent.length;
-        for (let index = nNumberOfElements - 1; index >= 0; index--) {
-            const oElement = aCurrentPageContent[index];
-            oCurrentPage.removeChild(oElement);
-        }
-    }
-    oPage.render();
+    return box;
 
 };
 
-const oCurrentPage = document.createElement('div');
-oCurrentPage.id = 'currentPage';
-document.body.appendChild(oCurrentPage);
-let oDynamicInputPage = new DynamicInput(oCurrentPage);
-let oGrid = new Grid(oCurrentPage);
-loadPage(oDynamicInputPage);
+let makeGrid = function (numberOfRows) {
 
-const aPages = [];
-aPages.push(oDynamicInputPage);
-aPages.push(oGrid);
+    let numberOfColumns = numberOfRows;
 
-aPages.forEach(oPage => {
-    const oPageLinkParagraph = document.createElement('p');
-    const oPageLink = document.createElement('a');
-    oPageLink.text = oPage.getName();
-    oPageLink.onclick = loadPage.bind(this, oPage);
-    oPageLinkParagraph.appendChild(oPageLink);
-    document.body.appendChild(oPageLinkParagraph);
-});
+    let y = 0;
+    let x = 0;
+    let rowBox;
+
+    while (y < numberOfRows) {
+
+        x = 0;
+        rowBox = document.createElement('div');
+        document.body.appendChild(rowBox);
+
+        while (x < numberOfColumns) {
+
+            makeBox.call(this, rowBox);
+            x = x + 1;
+
+        }
+
+        y = y + 1;
+
+    }
+
+};
+
+makeGrid(5);
